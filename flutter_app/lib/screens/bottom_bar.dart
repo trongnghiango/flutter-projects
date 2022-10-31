@@ -2,6 +2,9 @@ import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/screens/home_screen.dart';
+import 'package:flutter_app/screens/home_ticket.dart';
+import 'package:flutter_app/screens/profile_screen.dart';
+import 'package:flutter_app/screens/search_screen.dart';
 
 class BottomBar extends StatefulWidget {
   const BottomBar({Key? key}) : super(key: key);
@@ -13,15 +16,14 @@ class BottomBar extends StatefulWidget {
 class _BottomBarState extends State<BottomBar> {
   int _selectedIndex = 0;
   static final List<Widget> _widgetOption = <Widget>[
-    HomeScreen(),
-    const Text("Search"),
-    const Text("Ticket Atr"),
-    const Text("Profile"),
+    const HomeScreen(),
+    const SearchScreen(),
+    const TicketScreen(),
+    const ProfileScreen()
   ];
 
   void _onItemTapped(int index) {
     setState((){
-
       _selectedIndex = index;
     });
   }
@@ -30,10 +32,10 @@ class _BottomBarState extends State<BottomBar> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-          appBar: AppBar(
-            title: const Text('My Ticket'),
-          ),
-          body: Center(
+          // appBar: AppBar(
+          //   title: const Text('My Ticket'),
+          // ),
+          body: Container(
             child: _widgetOption[_selectedIndex],
           ),
           bottomNavigationBar: BottomNavigationBar(
